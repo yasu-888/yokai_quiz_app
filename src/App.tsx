@@ -8,23 +8,26 @@ const QuizApp = () => {
   const [quizFinished, setQuizFinished] = useState<boolean>(false);
 
   useEffect(() => {
-    Papa.parse("process.env.PUBLIC_URL +/ghost_quiz2.csv", {
-      download: true,
-      header: true,
-      skipEmptyLines: true,
-      complete: (results) => {
-        console.log("Parsed CSV data:", results.data); // デバッグ用
-        const quizData = results.data.map((quiz: any) => ({
-          question: quiz.question,
-          choices: [quiz.choice1, quiz.choice2, quiz.choice3, quiz.choice4],
-          answer: quiz.answer,
-        }));
-        setQuizzes(quizData.sort(() => 0.5 - Math.random())); // quizData をシャッフル
-      },
-      error: (error) => {
-        console.error("Error parsing CSV:", error);
-      },
-    });
+    Papa.parse(
+      "https://drive.google.com/uc?export=download&id=1G2H-FRgLXWpEtomFziCGkI4h_-9uCtS6",
+      {
+        download: true,
+        header: true,
+        skipEmptyLines: true,
+        complete: (results) => {
+          console.log("Parsed CSV data:", results.data); // デバッグ用
+          const quizData = results.data.map((quiz: any) => ({
+            question: quiz.question,
+            choices: [quiz.choice1, quiz.choice2, quiz.choice3, quiz.choice4],
+            answer: quiz.answer,
+          }));
+          setQuizzes(quizData.sort(() => 0.5 - Math.random())); // quizData をシャッフル
+        },
+        error: (error) => {
+          console.error("Error parsing CSV:", error);
+        },
+      }
+    );
   }, []);
 
   const handleClick = (e: React.MouseEvent<HTMLButtonElement, MouseEvent>) => {
