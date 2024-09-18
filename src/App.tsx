@@ -8,7 +8,7 @@ const QuizApp = () => {
   const [quizFinished, setQuizFinished] = useState<boolean>(false);
 
   useEffect(() => {
-    Papa.parse("/ghost_quiz2.csv", {
+    Papa.parse("process.env.PUBLIC_URL +/ghost_quiz2.csv", {
       download: true,
       header: true,
       skipEmptyLines: true,
