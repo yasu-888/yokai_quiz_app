@@ -1,10 +1,10 @@
-import React, { useState, useEffect } from "react";
+import { useState, useEffect } from "react";
 
 const QuizApp = () => {
   const [quizzes, setQuizzes] = useState<any[]>([]);
   const [currentQuizIndex, setCurrentQuizIndex] = useState<number>(0);
   const [correct, setCorrect] = useState<number>(0);
-  const [quizFinished, setQuizFinished] = useState<boolean>(false);
+  // const [quizFinished, setQuizFinished] = useState<boolean>(false);
 
   useEffect(() => {
     const fetchQuizzes = async () => {
@@ -31,7 +31,10 @@ const QuizApp = () => {
 
     const nextQuizIndex = currentQuizIndex + 1;
     if (nextQuizIndex >= quizzes.length) {
-      setQuizFinished(true);
+      // setQuizFinished(true); // この行を削除
+      alert(`全${quizzes.length}問終了！正解数は${correct}問です。`);
+      setCurrentQuizIndex(0);
+      setCorrect(0);
     } else {
       setCurrentQuizIndex(nextQuizIndex);
     }

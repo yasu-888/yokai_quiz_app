@@ -3,7 +3,7 @@
   "private": true,
   "version": "0.0.0",
   "type": "module",
-  "homepage": "https://github.com/yasu-888/yokai_quiz_app",
+  "homepage": "https://yasu-888.github.io/yokai_quiz_app",
   "scripts": {
     "dev": "vite",
     "build": "tsc -b && vite build",
