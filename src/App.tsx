@@ -4,7 +4,6 @@ const QuizApp = () => {
   const [quizzes, setQuizzes] = useState<any[]>([]);
   const [currentQuizIndex, setCurrentQuizIndex] = useState<number>(0);
   const [correct, setCorrect] = useState<number>(0);
-  // const [quizFinished, setQuizFinished] = useState<boolean>(false);
 
   useEffect(() => {
     const fetchQuizzes = async () => {
@@ -22,6 +21,7 @@ const QuizApp = () => {
 
   const handleClick = (choice: string) => {
     const isCorrect = choice === quizzes[currentQuizIndex].answer;
+
     alert(
       isCorrect
         ? "正解！"
@@ -31,7 +31,6 @@ const QuizApp = () => {
 
     const nextQuizIndex = currentQuizIndex + 1;
     if (nextQuizIndex >= quizzes.length) {
-      // setQuizFinished(true); // この行を削除
       alert(`全${quizzes.length}問終了！正解数は${correct}問です。`);
       setCurrentQuizIndex(0);
       setCorrect(0);
@@ -50,7 +49,8 @@ const QuizApp = () => {
   return (
     <>
       <header className="title">
-        <h1>妖怪 都道府県クイズ</h1>
+        <h1>妖怪</h1>
+        <h2>都道府県クイズ2</h2>
       </header>
       <div className="quiz-container">
         <p className="quiz-question">{currentQuiz.question}</p>
